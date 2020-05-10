@@ -1,0 +1,21 @@
+<div class="login-form">
+  <mat-card>
+    <h3>Страница авторизации</h3>
+    <div class="example-container">
+      <mat-form-field [style.width]="'100%'">
+        <span matPrefix>+7 &nbsp;</span>
+        <input matInput type="tel" placeholder="номер телефона"(change)="checkDisable()" mask="(000)-00-00-000" [formControl]="phone" required>
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-error *ngIf="phone.invalid">{{getErrorMessagePhone()}}</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field [style.width]="'100%'">
+        <input matInput type="password" placeholder="Пароль" (change)="checkDisable()" [formControl]="password" required>
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-error *ngIf="password.invalid">{{getErrorMessagePass()}}</mat-error>
+      </mat-form-field>
+      <br>
+      <button id="btn-submit" [disabled]="!disable" (click)="submit()" mat-raised-button color="primary">Войти</button>
+    </div>
+  </mat-card>
+</div>

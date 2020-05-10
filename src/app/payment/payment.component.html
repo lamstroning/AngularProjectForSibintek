@@ -1,0 +1,31 @@
+<div class="payment-container">
+  <mat-card *ngIf="!isLoad">
+    <div class="example-container">
+    <div class="load">
+      <mat-spinner></mat-spinner>
+    </div>
+    </div>
+  </mat-card>
+  <mat-card *ngIf="isLoad">
+    <h3>Оплата</h3>
+    <br>
+    <div class="payment-row">Баланс: {{this.money}}</div>
+    <br>
+    <div class="payment-row">Сумма счета: {{this.payment}}</div>
+
+    <div class="example-container">
+      <div *ngIf="this.money < this.payment" class="row">
+        <span class="text-warning">Не достаточно средств</span>
+        <br>
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-5">
+          <button [disabled]="this.money < this.payment" (click)="pay()" id="btn-payment" mat-raised-button color="primary">Оплатить</button>
+        </div>
+        <div class="col-5">
+          <button id="btn-cancel" mat-raised-button (click)="cancel()" color="primary">Отмена</button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
